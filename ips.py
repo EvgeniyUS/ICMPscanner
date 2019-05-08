@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import time, socket, thread
-import ports
+
 
 def ping(ip):
     alive = False
@@ -18,7 +18,7 @@ def ping(ip):
         finally:
             s.close()
 
-    for port in ports.getPorts():
+    for port in [80, 443]:
         port = checkPort(ip, port)
         if port:
             alive = True
@@ -32,7 +32,7 @@ def ipToList(ip, ips):
 
 def getIps():
     ips = []
-    nw = ['172.16.2.', '192.168.224.']
+    nw = ['192.168.10.', '192.168.7.']
     #nw = ['192.168.224.']
     for ip in nw:
         for i in xrange(1, 255):
